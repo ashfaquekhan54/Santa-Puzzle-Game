@@ -1,0 +1,66 @@
+/* Game container for the 3x3 puzzle */
+#game-container {
+    width: 390px; /* Total width of the puzzle */
+    height: 390px; /* Total height of the puzzle */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-rows: repeat(3, 1fr); /* 3 rows */
+    grid-gap: 2px; /* Optional spacing between blocks */
+    margin: auto;
+    border: 2px solid #ccc; /* Optional border for the puzzle container */
+}
+
+/* Puzzle pieces */
+.piece {
+    width: 130px; /* Block width */
+    height: 130px; /* Block height */
+    background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5eXVrZx8cfHud0NAz7rLI7-AZzJGDJrbrZ-79Pa6RCKh5Wnq4x-hhXTaWJadQ25GyUNQYu0IpNKPydZDla4DXh9gHBuCJn1SjmLUgV_vy_IQB0CnnC0Ub7xZn7owMKMA0hw34nat-ehWLh-rR-zdWEfSTnuPGxLIupufigxjQyEkMiqrU7BZSrupS/s390/Santa%20(3).jpg');
+    background-size: 390px 390px; /* Resize the image to fit the grid */
+    background-repeat: no-repeat;
+    border: 1px solid #ddd; /* Optional border for each block */
+    cursor: grab; /* Draggable cursor */
+}
+
+/* Assign background positions for each puzzle piece */
+.piece:nth-child(1) { background-position: 0px 0px; }    /* Top-left */
+.piece:nth-child(2) { background-position: -130px 0px; } /* Top-center */
+.piece:nth-child(3) { background-position: -260px 0px; } /* Top-right */
+.piece:nth-child(4) { background-position: 0px -130px; } /* Middle-left */
+.piece:nth-child(5) { background-position: -130px -130px; } /* Middle-center */
+.piece:nth-child(6) { background-position: -260px -130px; } /* Middle-right */
+.piece:nth-child(7) { background-position: 0px -260px; } /* Bottom-left */
+.piece:nth-child(8) { background-position: -130px -260px; } /* Bottom-center */
+.empty { /* Empty block style */
+    width: 130px;
+    height: 130px;
+    border: 1px solid transparent;
+    cursor: default;
+}
+
+/* Win popup style */
+#win-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+}
+
+#win-popup button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#win-popup button:hover {
+    background-color: #45a049;
+}
