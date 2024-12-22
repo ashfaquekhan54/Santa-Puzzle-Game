@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa Puzzle Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 style="text-align: center;">Santa Puzzle Game</h1>
+    <p style="text-align: center;">Arrange the blocks to complete the Santa image!</p>
+    <div id="game-container">
+        <div class="piece" data-index="0"></div> <!-- Top-left -->
+        <div class="piece" data-index="1"></div> <!-- Top-center -->
+        <div class="piece" data-index="2"></div> <!-- Top-right -->
+        <div class="piece" data-index="3"></div> <!-- Middle-left -->
+        <div class="piece" data-index="4"></div> <!-- Middle-center -->
+        <div class="piece" data-index="5"></div> <!-- Middle-right -->
+        <div class="piece" data-index="6"></div> <!-- Bottom-left -->
+        <div class="piece" data-index="7"></div> <!-- Bottom-center -->
+        <div class="empty"></div> <!-- Empty block -->
+    </div>
+
+    <!-- Win Popup -->
+    <div id="win-popup">
+        <h2>Congratulations! You Completed the Puzzle!</h2>
+        <button onclick="redirectToAdsterra()">LEVEL 2 START</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
