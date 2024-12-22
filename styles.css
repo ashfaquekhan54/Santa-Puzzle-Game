@@ -1,3 +1,30 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Title and instructions */
+h1 {
+    font-size: 2rem;
+    color: #333;
+    margin: 20px 0;
+}
+
+p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
 /* Game container for the 3x3 puzzle */
 #game-container {
     width: 390px; /* Total width of the puzzle */
@@ -5,9 +32,12 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns */
     grid-template-rows: repeat(3, 1fr); /* 3 rows */
-    grid-gap: 2px; /* Optional spacing between blocks */
+    grid-gap: 2px; /* Spacing between blocks */
     margin: auto;
-    border: 2px solid #ccc; /* Optional border for the puzzle container */
+    border: 2px solid #ccc; /* Border for the puzzle container */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #fff; /* Background color for better contrast */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 /* Puzzle pieces */
@@ -17,43 +47,49 @@
     background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5eXVrZx8cfHud0NAz7rLI7-AZzJGDJrbrZ-79Pa6RCKh5Wnq4x-hhXTaWJadQ25GyUNQYu0IpNKPydZDla4DXh9gHBuCJn1SjmLUgV_vy_IQB0CnnC0Ub7xZn7owMKMA0hw34nat-ehWLh-rR-zdWEfSTnuPGxLIupufigxjQyEkMiqrU7BZSrupS/s390/Santa%20(3).jpg');
     background-size: 390px 390px; /* Resize the image to fit the grid */
     background-repeat: no-repeat;
-    border: 1px solid #ddd; /* Optional border for each block */
+    border: 1px solid #ddd; /* Border for each block */
     cursor: grab; /* Draggable cursor */
+    transition: transform 0.2s ease; /* Smooth effect on drag */
 }
 
-/* Assign background positions for each puzzle piece */
-.piece:nth-child(1) { background-position: 0px 0px; }    /* Top-left */
-.piece:nth-child(2) { background-position: -130px 0px; } /* Top-center */
-.piece:nth-child(3) { background-position: -260px 0px; } /* Top-right */
-.piece:nth-child(4) { background-position: 0px -130px; } /* Middle-left */
-.piece:nth-child(5) { background-position: -130px -130px; } /* Middle-center */
-.piece:nth-child(6) { background-position: -260px -130px; } /* Middle-right */
-.piece:nth-child(7) { background-position: 0px -260px; } /* Bottom-left */
-.piece:nth-child(8) { background-position: -130px -260px; } /* Bottom-center */
-.piece:nth-child(9) { background-position: -260px -260px; } /* Bottom-right */
+/* Dragging visual effect */
+.piece.dragging {
+    opacity: 0.6;
+    transform: scale(1.1); /* Slight zoom effect */
+}
 
-/* Win popup style */
+/* Win popup styling */
 #win-popup {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     color: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     text-align: center;
     z-index: 1000;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
+
+#win-popup h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
 #win-popup button {
     background-color: #4CAF50;
     color: white;
     border: none;
     padding: 10px 20px;
-    cursor: pointer;
     font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
+
 #win-popup button:hover {
     background-color: #45a049;
 }
@@ -64,11 +100,12 @@
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    width: 160px; /* Ad width */
-    height: 600px; /* Ad height */
+    width: 160px;
+    height: 600px;
     background-color: #f5f5f5; /* Optional background color */
     text-align: center;
     z-index: 1000; /* Ensure it's above content */
+    border-right: 1px solid #ccc;
 }
 
 /* Right Ad Styling */
@@ -77,15 +114,61 @@
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    width: 160px; /* Ad width */
-    height: 600px; /* Ad height */
+    width: 160px;
+    height: 600px;
     background-color: #f5f5f5; /* Optional background color */
     text-align: center;
     z-index: 1000; /* Ensure it's above content */
+    border-left: 1px solid #ccc;
 }
 
 /* Content Styling to Adjust for Ads */
 #content {
     margin-left: 180px; /* Add margin to avoid overlapping with left ad */
     margin-right: 180px; /* Add margin to avoid overlapping with right ad */
+    text-align: center;
+    max-width: 800px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #left-ad, #right-ad {
+        display: none; /* Hide ads on smaller screens */
+    }
+
+    #content {
+        margin: 0; /* Remove margins for smaller screens */
+    }
+
+    #game-container {
+        width: 300px; /* Adjust puzzle size */
+        height: 300px;
+    }
+
+    .piece {
+        width: 100px;
+        height: 100px;
+        background-size: 300px 300px; /* Resize the background image */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    #game-container {
+        width: 240px; /* Adjust puzzle size */
+        height: 240px;
+    }
+
+    .piece {
+        width: 80px;
+        height: 80px;
+        background-size: 240px 240px; /* Resize the background image */
+    }
 }
