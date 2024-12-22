@@ -30,12 +30,7 @@
 .piece:nth-child(6) { background-position: -260px -130px; } /* Middle-right */
 .piece:nth-child(7) { background-position: 0px -260px; } /* Bottom-left */
 .piece:nth-child(8) { background-position: -130px -260px; } /* Bottom-center */
-.empty { /* Empty block style */
-    width: 130px;
-    height: 130px;
-    border: 1px solid transparent;
-    cursor: default;
-}
+.piece:nth-child(9) { background-position: -260px -260px; } /* Bottom-right */
 
 /* Win popup style */
 #win-popup {
@@ -51,7 +46,6 @@
     text-align: center;
     z-index: 1000;
 }
-
 #win-popup button {
     background-color: #4CAF50;
     color: white;
@@ -60,7 +54,6 @@
     cursor: pointer;
     font-size: 16px;
 }
-
 #win-popup button:hover {
     background-color: #45a049;
 }
