@@ -1,6 +1,8 @@
 // Shuffle the blocks when the page loads
 const blocks = document.querySelectorAll('.piece');
-const shuffledIndexes = [...Array(9).keys()].filter(i => i < 8); // 8 blocks only (excluding empty block)
+const shuffledIndexes = [...Array(9).keys()]; // Create an array of 9 blocks for shuffle
+
+// Shuffle the blocks
 shuffledIndexes.sort(() => Math.random() - 0.5);
 
 blocks.forEach((block, i) => {
@@ -17,20 +19,29 @@ let draggedBlock = null;
 blocks.forEach(block => {
     block.setAttribute('draggable', true);
 
-    block.addEventListener('dragstart', () => {
+    block.addEventListener('dragstart', (e) => {
         draggedBlock = block;
+        setTimeout(() => {
+            block.classList.add('dragging'); // Add dragging class for visual effect
+        }, 0);
     });
 
-    block.addEventListener('dragover', e => {
+    block.addEventListener('dragend', () => {
+        draggedBlock = null;
+        block.classList.remove('dragging'); // Remove dragging class when done
+    });
+
+    block.addEventListener('dragover', (e) => {
         e.preventDefault(); // Allow the drop
     });
 
-    block.addEventListener('drop', () => {
-        if (draggedBlock && draggedBlock !== block) {
+    block.addEventListener('dragenter', (e) => {
+        e.preventDefault(); // Prevent default behavior to allow dropping
+        if (draggedBlock !== block) {
             // Swap blocks visually
-            const tempIndex = draggedBlock.dataset.index;
+            const draggedIndex = draggedBlock.dataset.index;
             draggedBlock.dataset.index = block.dataset.index;
-            block.dataset.index = tempIndex;
+            block.dataset.index = draggedIndex;
 
             // Swap the background positions
             const tempBackground = draggedBlock.style.backgroundPosition;
@@ -52,5 +63,5 @@ function checkWin() {
 }
 
 function redirectToAdsterra() {
-    window.location.href = 'https://engagedpungentrepress.com/t4au2igb3?key=2b7eb6bd385bfde50c265687ca8f3fc5'; // Replace with your Adsterra link
+    window.location.href = 'https://engagedpungentrepress.com/t4au2igb3?key=2b7eb6bd385bfde50c265687ca8f3fc5'; // Redirect to Adsterra link
 }
