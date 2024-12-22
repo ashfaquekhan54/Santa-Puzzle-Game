@@ -57,3 +57,35 @@
 #win-popup button:hover {
     background-color: #45a049;
 }
+
+/* Left Ad Styling */
+#left-ad {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 160px; /* Ad width */
+    height: 600px; /* Ad height */
+    background-color: #f5f5f5; /* Optional background color */
+    text-align: center;
+    z-index: 1000; /* Ensure it's above content */
+}
+
+/* Right Ad Styling */
+#right-ad {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 160px; /* Ad width */
+    height: 600px; /* Ad height */
+    background-color: #f5f5f5; /* Optional background color */
+    text-align: center;
+    z-index: 1000; /* Ensure it's above content */
+}
+
+/* Content Styling to Adjust for Ads */
+#content {
+    margin-left: 180px; /* Add margin to avoid overlapping with left ad */
+    margin-right: 180px; /* Add margin to avoid overlapping with right ad */
+}
