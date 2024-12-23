@@ -19,6 +19,7 @@ body, h1, p {
     margin: 50px auto;
     border: 2px solid #ccc;
     position: relative;
+    background-color: transparent; /* Make sure the background of the game area is transparent */
 }
 
 /* Puzzle pieces */
