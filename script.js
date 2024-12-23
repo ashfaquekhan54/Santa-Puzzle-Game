@@ -15,16 +15,14 @@ blocks.forEach((block, i) => {
 let draggedBlock = null;
 
 blocks.forEach(block => {
-    block.setAttribute('draggable', true);
-
     block.addEventListener('dragstart', (e) => {
         draggedBlock = block;
-        setTimeout(() => block.classList.add('dragging'), 0);
+        setTimeout(() => block.style.opacity = "0.5", 0);
     });
 
     block.addEventListener('dragend', () => {
         draggedBlock = null;
-        block.classList.remove('dragging');
+        block.style.opacity = "1";
     });
 
     block.addEventListener('dragover', (e) => e.preventDefault());
