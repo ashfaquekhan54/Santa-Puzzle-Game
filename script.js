@@ -12,13 +12,12 @@ blocks.forEach((block, i) => {
     block.dataset.index = shuffledIndexes[i];
 });
 
-// Drag-and-drop logic
 let draggedBlock = null;
 
 blocks.forEach(block => {
     block.setAttribute('draggable', true);
 
-    block.addEventListener('dragstart', () => {
+    block.addEventListener('dragstart', (e) => {
         draggedBlock = block;
         setTimeout(() => block.classList.add('dragging'), 0);
     });
@@ -29,7 +28,6 @@ blocks.forEach(block => {
     });
 
     block.addEventListener('dragover', (e) => e.preventDefault());
-
     block.addEventListener('dragenter', (e) => {
         e.preventDefault();
         if (draggedBlock !== block) {
@@ -46,24 +44,13 @@ blocks.forEach(block => {
     });
 });
 
-let isGameWon = false;
-
-// Redirect to Adsterra if not solved within 15 seconds
-const redirectTimer = setTimeout(() => {
-    if (!isGameWon) {
-        window.location.href = 'https://engagedpungentrepress.com/t4au2igb3?key=2b7eb6bd385bfde50c265687ca8f3fc5';
-    }
-}, 15000);
-
 function checkWin() {
     const isSolved = [...blocks].every((block, i) => block.dataset.index == i);
     if (isSolved) {
-        clearTimeout(redirectTimer);
-        isGameWon = true;
         document.getElementById("win-popup").style.display = "block";
     }
 }
 
 function redirectToAdsterra() {
-    window.location.href = 'https://engagedpungentrepress.com/t4au2igb3?key=2b7eb6bd385bfde50c265687ca8f3fc5';
+    window.location.href = 'https://engagedpungentrepress.com/f9pw15zp0?key=f9998871955ab6164275c308b108631d';
 }
